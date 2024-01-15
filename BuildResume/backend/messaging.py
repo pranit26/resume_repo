@@ -5,13 +5,13 @@ from botocore.exceptions import NoCredentialsError
 from django.core.files.base import ContentFile
 
  
-sqs_send = boto3.client('sqs',aws_access_key_id="AKIAZ4B6NTNZ7CBSEBYO",aws_secret_access_key="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",region_name='ap-south-1')
+sqs_send = boto3.client('sqs',aws_access_key_id="my_access_key",aws_secret_access_key="aws_secret_access_key",region_name='ap-south-1')
 
-s3 = boto3.client('s3',aws_access_key_id="AKIAZ4B6NTNZ7CBSEBYO",aws_secret_access_key="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",region_name='ap-south-1')
+s3 = boto3.client('s3',aws_access_key_id="aws_secret_access_key",aws_secret_access_key="aws_secret_access_key",region_name='ap-south-1')
 
 def notify_backend(id,resume_content):
     try:
-        queue_url = "https://sqs.ap-south-1.amazonaws.com/678735747955/resumeQueue"
+        queue_url = "https://sqs.ap-south-1.amazonaws.com/678735747955/resume"
         message_body = f'New candidate created with ID: {id}'
         res=sqs_send.send_message(QueueUrl=queue_url,MessageBody=message_body,MessageAttributes=resume_content)
         return res

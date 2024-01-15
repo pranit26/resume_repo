@@ -138,4 +138,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure your SQS settings here
 AWS_SQS_REGION_NAME = 'ap-south-1'
-AWS_SQS_QUEUE_NAME = 'resumeQueue'
+AWS_SQS_QUEUE_NAME = 'myQueue'

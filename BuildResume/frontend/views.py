@@ -130,7 +130,7 @@ def get_filtered_results(field, filter_data, order, sortBy, record_head, record_
 def download_resume(request):
     
     responseObj=Response(request)
-    s3_resource = boto3.client('s3',aws_access_key_id="AKIAZ4B6NTNZ7CBSEBYO",aws_secret_access_key="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")
+    s3_resource = boto3.client('s3',aws_access_key_id="aws_secret_access_key",aws_secret_access_key="aws_secret_access_key")
 
     try:        
         bucket_name="resumebucket14"
@@ -141,7 +141,7 @@ def download_resume(request):
             s3_resource.download_file(Bucket=bucket_name,Key=key['Key'],Filename=key['Key'])
 
         message = {"message": "Download completes.", "status": 200}
-        return responseObj(message,payload={}, status_code=200) 
+        return responseObj.createResponse(message,payload={}, status_code=200) 
     except Exception as e:
         print(traceback.format_exc())
         return responseObj.createResponse(message=error_string,payload={},status_code=404)
